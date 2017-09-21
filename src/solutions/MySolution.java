@@ -28,8 +28,9 @@ public class MySolution implements Solution {
 
     @Override
     public boolean palindrome(String word) {
-        String optimized = word.replaceAll("\\s+", "").toLowerCase();
-        if (reverseString(word).equals(word)) {
+        String optimized = word
+                .replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+        if (reverseString(optimized).equals(optimized)) {
             return true;
         }
         return false;
