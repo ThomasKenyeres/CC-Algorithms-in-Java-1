@@ -191,7 +191,6 @@ public class MySolution implements Solution {
 
     @Override
     public String rot13(String word) {
-        char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
         String result = "";
         for (char letter: word.toCharArray()) {
             result += String.valueOf(decodeROT13(letter));
