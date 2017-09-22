@@ -118,20 +118,22 @@ public class MySolution implements Solution {
 
     @Override
     public String truncateString(String word, int counter) {
-        if (word.length() + 3 > counter) {
-            char[] letters = word.toCharArray();
-            String truncated = "";
-            if (word.length() - counter < 4) {
-                return word;
+        if (counter >= word.length()) {
+            return word;
+        }
+        else {
+            if (word.length() > 3) {
+                return word.substring(0, counter - 3) + "...";
             }
             else {
-                for (int i = 0; i < counter - 3; i++) {
-                    truncated += letters[i];
+                if (word.length() == 1) {
+                    return word.substring(0, 1) + "...";
+                }
+                else {
+                    return word.substring(0, counter-1) + "...";
                 }
             }
-            return truncated + "...";
         }
-        return word;
     }
 
     @Override
@@ -154,7 +156,13 @@ public class MySolution implements Solution {
 
     @Override
     public Object[] slasher(Object[] numbers, int counter) {
-        return new Object[0];
+        List<Object> objects = new ArrayList<>();
+        for (int i = 0; i < numbers.length; i++) {
+            if (i >= counter-1) {
+                objects.add(numbers[i]);
+            }
+        }
+        return objects.toArray();
     }
 
     @Override
